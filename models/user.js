@@ -35,7 +35,7 @@ userSchema.methods.generateJWT = function() {
         email: this.email,
         role: this.role,
         name: this.name
-    }, process.env.JWT_SECRET_KEY, {expiresIn: "7d"});
+    }, process.env.JWT_SECRET_KEY, {expiresIn: "1d"});
     return token;
 }
 
