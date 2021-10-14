@@ -1,13 +1,13 @@
-const { Schema, model } = require("mongoose");
-const Joi = require("joi");
-const jwt = require("jsonwebtoken");
+const { Schema, model } = require('mongoose');
+const Joi = require('joi');
+const jwt = require('jsonwebtoken');
 
 const userSchema = Schema({
     name: {
         type: String,
         required: true,
         minlength: 3,
-        maxlength: 100,
+        maxlenth: 100,
     },
     email: {
         type: String,
@@ -26,22 +26,22 @@ const userSchema = Schema({
         type: String,
         enum: ['user', 'admin'],
         default: 'user',
-    },
-}, {timestamps: true});
+    }
+}, { timestamps: true });
 
-userSchema.methods.generateJWT = function() {
+userSchema.methods.generateJWT = function () {
     const token = jwt.sign({
-        _id: this.id,
+        _id: this._id,
         email: this.email,
         role: this.role,
         name: this.name
-    }, process.env.JWT_SECRET_KEY, {expiresIn: "1d"});
+    }, process.env.JWT_SECRET_KEY, { expiresIn: "7d" });
     return token;
 }
 
 const validateUser = user => {
     const schema = Joi.object({
-        name: Joi.string().required(),
+        name: Joi.string().min(3).max(100).required(),
         email: Joi.string().min(5).max(255).required(),
         password: Joi.string().min(5).max(255).required(),
     });

@@ -1,4 +1,4 @@
-const  { Schema, model } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 module.exports.Profile = model('Profile', Schema({
     user: {
@@ -12,6 +12,6 @@ module.exports.Profile = model('Profile', Schema({
     address2: String,
     city: String,
     state: String,
-    country: String,
     postcode: Number,
+    country: String,
 }))

@@ -6,7 +6,7 @@ module.exports.Category = model('Category', Schema({
         type: String,
         unique: true
     }
-}, {timestamp: true}));
+}, { timestamps: true }));
 
 module.exports.validate = category => {
     const schema = Joi.object({

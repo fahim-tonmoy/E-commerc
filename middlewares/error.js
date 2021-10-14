@@ -1,4 +1,3 @@
-module.exports = (err, req, res, next)=> {
-    console.log(err.message);
-    return res.status(500).send(err.message || "Something Failed!!!, error.js");
+module.exports = (err, req, res, next) => {
+    return res.status(500).send("Something Failed!!!!");
 }

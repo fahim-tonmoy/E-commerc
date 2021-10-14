@@ -4,9 +4,8 @@ const {
     getCartItem,
     updateCartItem,
     deleteCartItem
-} = require('../controllers/cardControllers');
+} = require('../controllers/cartControllers');
 const authorize = require('../middlewares/authorize');
-
 
 router.route('/')
     .get(authorize, getCartItem)
@@ -14,6 +13,6 @@ router.route('/')
     .put(authorize, updateCartItem);
 
 router.route('/:id')
-    .get(authorize, deleteCartItem);
+    .delete(authorize, deleteCartItem);
 
-    module.exports = router;
+module.exports = router;

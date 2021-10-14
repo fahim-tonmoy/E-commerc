@@ -15,15 +15,15 @@ module.exports.Product = model('Product', Schema({
         data: Buffer,
         contentType: String,
     }
-}, {timestamp: true}));
+}, { timestamps: true }));
 
 module.exports.validate = product => {
     const schema = Joi.object({
         name: Joi.string().min(3).max(255).required(),
-        description: Joi.string().min(3).max(255).required(),
+        description: Joi.string().max(2000).required(),
         price: Joi.number().required(),
-        category: Joi.string().required(),
         quantity: Joi.number().required(),
+        category: Joi.string().required(),
     });
     return schema.validate(product);
 }
