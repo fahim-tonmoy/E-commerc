@@ -93,7 +93,7 @@ module.exports.initPayment = async (req, res) => {
     let order = new Order({
         cartItems: cartItems,
         user: userId,
-        tansaction_id: tran_id,
+        transaction_id: tran_id,
         address: profile
     })
     if (response.status === 'SUCCESS') {
@@ -105,11 +105,13 @@ module.exports.initPayment = async (req, res) => {
 
 
 module.exports.paymentSuccess = async (req, res) => {
- res.sendFile(path.join(__basedir + "public/success.html"))
+ res.sendFile(path.join(`${__basedir}/public/success.html`))
 }
+
 module.exports.paymentFail = async (req, res) => {
-    res.sendFile(path.join(__basedir + "public/fail.html"))
+    res.sendFile(path.join(`${__basedir}/public/fail.html`))
 }
+
 module.exports.paymentCancel = async (req, res) => {
-    res.sendFile(path.join(__basedir + "public/cancel.html"))
+    res.sendFile(path.join(`${__basedir}/public/cancel.html`))
 }
